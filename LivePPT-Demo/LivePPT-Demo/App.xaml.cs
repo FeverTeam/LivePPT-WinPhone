@@ -11,6 +11,7 @@ using System.Windows.Media.Animation;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
+
 using Microsoft.Phone.Shell;
 
 namespace LivePPT_Demo
@@ -140,7 +141,9 @@ namespace LivePPT_Demo
 
             // 创建框架但先不将它设置为 RootVisual；这允许初始
             // 屏幕保持活动状态，直到准备呈现应用程序时。
-            RootFrame = new PhoneApplicationFrame();
+            //RootFrame = new PhoneApplicationFrame();
+            RootFrame = new Microsoft.Phone.Controls.TransitionFrame();
+
             RootFrame.Navigated += CompleteInitializePhoneApplication;
 
             // 处理导航故障

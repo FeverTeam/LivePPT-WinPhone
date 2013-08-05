@@ -11,6 +11,7 @@ using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
 using System.Windows.Media.Imaging;
+using System.Collections.ObjectModel;
 
 namespace LivePPT_Demo
 {
@@ -26,5 +27,7 @@ namespace LivePPT_Demo
             BitmapImage imageInbox = new BitmapImage(new Uri("/LivePPT-Demo;component/Images/Lighthouse.jpg", UriKind.Relative));
             imageBox.Source = imageInbox; 
         }
+
+        
     }
 }

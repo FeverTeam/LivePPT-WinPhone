@@ -14,10 +14,14 @@
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait"  Orientation="Portrait"
-    shell:SystemTray.IsVisible="False"    
+    shell:SystemTray.IsVisible="False"
+    
+    xmlns:local ="clr-namespace:LivePPT_Demo"
     
     >
-
+    <phone:PhoneApplicationPage.Resources>
+        
+    </phone:PhoneApplicationPage.Resources>
     
 
     <!--LayoutRoot 是包含所有页面内容的根网格-->
@@ -36,6 +40,7 @@
  
             <!--Panorama 项目一-->
             <controls:PanoramaItem>
+                <Grid>
                 <!--<controls:PanoramaItem.HeaderTemplate>
                     <DataTemplate>
                         <TextBlock Text="hey" FontSize="60" Margin="0,0,0,0" FontFamily="Calibri"/>
@@ -43,35 +48,47 @@
                 </controls:PanoramaItem.HeaderTemplate>-->
                 <!--具有文字环绕的双线列表-->
                 <!--<Button Content="发起" Height="120" HorizontalAlignment="Left" Margin="0,0,0,0" Name="StartCof" VerticalAlignment="Top" Width="300" Background="Red"  Click="StartCof_Click" />-->
-                <ListBox Margin="0,0,-12,0" ItemsSource="{Binding Items}">
+                
+                <!--添加一个listbox控件,并添加两个元素，一个是Image控件，另一个是TextBlock控件-->
+                <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+                    <Button Content="发起/加入会议" Height="120" HorizontalAlignment="Left" Margin="0,0,0,0" Name="StartCof" VerticalAlignment="Top" Width="300" Background="blue"  Click="StartCof_Click" />
+                    </Grid>
+                <ListBox Name="lstPicture" VerticalAlignment="Bottom" Height="450" SelectionChanged="lstPicture_SelectionChanged">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel Orientation="Vertical"  Margin="0,0,0,5" >
-                                <Canvas Height="200" Width="400" Margin="12,5,5,6">
-                                    <Rectangle Height="200" Width="400" Fill="#FFE5001b" Margin="0,0,0,0"/>                         
-                                    <TextBlock Text="{Binding LineOne}" TextWrapping="Wrap" FontSize="40" Margin="12,0,0,0"/>
-                                </Canvas>                          
+                            <StackPanel Orientation="Horizontal">
+                                <!--这里的StackPanel 可以看做是用来提供数据模板,即每一个ListboxItem的内容显示方式-->
+                                <Canvas Height="200" Width="400" Margin="0,0,0,58" >                                            
+                                    <Image Source="{Binding Image}" Height="200" Width="400" Margin="0,0,0,0" Stretch="Uniform" HorizontalAlignment="Center" />
+                                    <TextBlock Text="{Binding Filename}" TextWrapping="Wrap" FontSize="40" Margin="0,185,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </Canvas>                                                     
                             </StackPanel>
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>
+                </Grid>
 
-                
+
+
             </controls:PanoramaItem>
  
             <!--Panorama 项目二-->
             <!--使用“Orientation="Horizontal"”可使面板水平放置-->
-            <controls:PanoramaItem Header="第二项">
+            <controls:PanoramaItem>
+                <controls:PanoramaItem.HeaderTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="设置" FontSize="80" Margin="0,0,0,0" FontFamily="Microsoft MHei" />
+                    </DataTemplate>
+                </controls:PanoramaItem.HeaderTemplate>
                 <!--具有图像占位符和文字环绕的双线列表-->
-                <ListBox Margin="0,0,-12,0" ItemsSource="{Binding Items}">
+                <ListBox Name="settingLst" Margin="0,0,-12,0" ItemsSource="{Binding Items}">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal" Margin="0,0,0,17">
                                 <!--用图像替换矩形-->
-                                <Rectangle Height="100" Width="100" Fill="#FFE5001b" Margin="12,0,9,0"/>
+                                <Rectangle Height="80" Width="80" Fill="#FFE5001b" Margin="12,0,9,0"/>
                                 <StackPanel Width="311">                                    
-                                    <TextBlock Text="{Binding LineOne}" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}"/>
-                                    <TextBlock Text="{Binding LineTwo}" TextWrapping="Wrap" Margin="12,-6,12,0" Style="{StaticResource PhoneTextSubtleStyle}"/>
+                                    <TextBlock Text="{Binding LineOne}" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}"/>                                    
                                 </StackPanel>
                             </StackPanel>
                         </DataTemplate>

@@ -71,8 +71,10 @@
     <Compile Include="ViewImages.xaml.cs">
       <DependentUpon>ViewImages.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ConfItemModel.cs" />
     <Compile Include="ViewModels\ItemViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="Utils.cs" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">

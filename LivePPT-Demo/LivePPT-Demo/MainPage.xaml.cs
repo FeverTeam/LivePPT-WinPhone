@@ -14,6 +14,7 @@ using Microsoft.Xna.Framework.Media;
 using System.IO;
 using System.Windows.Media.Imaging;
 using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 
 namespace LivePPT_Demo
 {
@@ -28,6 +29,7 @@ namespace LivePPT_Demo
             DataContext = App.ViewModel;
             this.Loaded += new RoutedEventHandler(MainPage_Loaded);
             GetWP7Picture();
+            //InitializeConfItemModel();
 
         }
 
@@ -41,7 +43,8 @@ namespace LivePPT_Demo
         }
 
         PictureCollection _pictureCollection = null;
-        private ObservableCollection<FlowItem> _pictureList = new ObservableCollection<FlowItem>();
+        //private ObservableCollection<FlowItem> _pictureList = new ObservableCollection<FlowItem>();
+        private ObservableCollection<ConfItemModel> _ConfItemModelList = new ObservableCollection<ConfItemModel>();
 
         void GetWP7Picture()
         {
@@ -58,16 +61,19 @@ namespace LivePPT_Demo
                 BitmapImage _bi = new BitmapImage();
                 _bi.SetSource(_s);
 
-                FlowItem _w = new FlowItem();
-                _w.Picture = _bi;
-                _w.Name = _p.Name;
+                ConfItemModel _w = new ConfItemModel();
+                _w.Image = _bi;
+                _w.Filename = _p.Name;
 
-                ImageBrush ib = new ImageBrush();
-                ib.ImageSource = _bi;
+                
+                
 
-                _w.BackupgroupPicture = ib;
+                //ImageBrush ib = new ImageBrush();
+                //ib.ImageSource = _bi;
 
-                _pictureList.Add(_w);
+                //_w.BackupgroupPicture = ib;
+
+                _ConfItemModelList.Add(_w);
 
                 picLimit++;
                 if (picLimit >= 20)
@@ -75,10 +81,13 @@ namespace LivePPT_Demo
             }
 
 
+            lstPicture.ItemsSource = null;
+            lstPicture.ItemsSource = _ConfItemModelList;
             //fic3d.ItemsSource = null;
             //fic3d.ItemsSource = _pictureList;
             
         }
+        
 
        
 
@@ -86,8 +95,42 @@ namespace LivePPT_Demo
         {
             this.NavigationService.Navigate(new Uri("/ViewImages.xaml", UriKind.Relative));
         }
+
+        public ImageSource Picture;
+        //event NotifyCollectionChangedEventHandler CollectionChanged;
+
+        private void lstPicture_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            /*
+            string target = "/ViewImages.xaml";
+            target += string.Format("?imageBox.Source={0}", lstPicture.ItemsSource.ToString());
+            this.NavigationService.Navigate(new Uri(target, UriKind.Relative));*/
+
+            this.NavigationService.Navigate(new Uri("/ViewImages.xaml", UriKind.Relative));
+        }
+
+
+        
+
+        /*
+        private void InitializeConfItemModel()
+        {
+            ConfItemModel.Add(new ConfItemModel() { Filename = "Desert.jpg", Image = Utils.GetImage("Desert.jpg") });
+            ConfItemModel.Add(new ConfItemModel() { Filename = "Field.jpg", Image = Utils.GetImage("Field.jpg") });//获取相对路径下的图像资源添加到集合中。   
+            ConfItemModel.Add(new ConfItemModel() { Filename = "Flower.jpg", Image = Utils.GetImage("Flower.jpg") });
+            ConfItemModel.Add(new ConfItemModel() { Filename = "Hydrangeas.jpg", Image = Utils.GetImage("Hydrangeas.jpg") });
+            ConfItemModel.Add(new ConfItemModel() { Filename = "Jellyfish.jpg", Image = Utils.GetImage("Jellyfish.jpg") });
+            ConfItemModel.Add(new ConfItemModel() { Filename = "Koala.jpg", Image = Utils.GetImage("Koala.jpg") });
+            ConfItemModel.Add(new ConfItemModel() { Filename = "Leaves.jpg", Image = Utils.GetImage("Leaves.jpg") });
+            ConfItemModel.Add(new ConfItemModel() { Filename = "Lighthouse.jpg", Image = Utils.GetImage("Lighthouse.jpg") });
+            ConfItemModel.Add(new ConfItemModel() { Filename = "Penguins.jpg", Image = Utils.GetImage("Penguins.jpg") });
+            ConfItemModel.Add(new ConfItemModel() { Filename = "Rocks.jpg", Image = Utils.GetImage("Rocks.jpg") });
+        }
+          */
+
     }
 
+    
     public class FlowItem
     {
         public string Name { get; set; }

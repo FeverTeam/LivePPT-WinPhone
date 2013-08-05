@@ -10,28 +10,27 @@
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
-    SupportedOrientations="Portrait" Orientation="Portrait"
-    mc:Ignorable="d" d:DesignHeight="768" d:DesignWidth="480"
+    SupportedOrientations="Landscape" Orientation="Landscape"
+    mc:Ignorable="d" d:DesignHeight="480" d:DesignWidth="728"
     shell:SystemTray.IsVisible="True">
 
     <!--LayoutRoot 是包含所有页面内容的根网格-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
-        <Grid.RowDefinitions>
+        <!--<Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
+        </Grid.RowDefinitions>-->
 
-        <!--TitlePanel 包含应用程序的名称和页标题-->
+        <!--TitlePanel 包含应用程序的名称和页标题
         <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
             <TextBlock x:Name="ApplicationTitle" Text="LivePPT-Demo" Style="{StaticResource PhoneTextNormalStyle}"/>
             <TextBlock x:Name="PageTitle" Text="查看图片" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
-        </StackPanel>
+        </StackPanel>-->
 
         <!--ContentPanel - 在此处放置其他内容-->
-        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-            <Image Height="321" HorizontalAlignment="Left" Margin="12,6,0,0" Name="imageBox" Stretch="Uniform" VerticalAlignment="Top" Width="438" Source="/LivePPT-Demo;component/Images/Penguins.jpg" />
-            <Button Content="换一张" Height="72" HorizontalAlignment="Left" Margin="145,390,0,0" Name="changeImage" VerticalAlignment="Top" Width="160" Click="changeImage_Click"/>
-        </Grid>
+        
+            <Image  HorizontalAlignment="Left" Margin="12,6,0,0" Name="imageBox" Stretch="Uniform" VerticalAlignment="Top" Source="/LivePPT-Demo;component/Images/Penguins.jpg" />            
+        
     </Grid>
  
     <!--演示 ApplicationBar 用法的示例代码-->

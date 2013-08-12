@@ -28,6 +28,11 @@ namespace LivePPT_Demo
             imageBox.Source = imageInbox; 
         }
 
+        private void button1_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new Uri("/Login_Register.xaml", UriKind.Relative));
+        }
+
         
     }
 }

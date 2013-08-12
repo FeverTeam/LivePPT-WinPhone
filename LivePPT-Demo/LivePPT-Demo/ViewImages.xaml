@@ -10,9 +10,9 @@
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
-    SupportedOrientations="Landscape" Orientation="Landscape"
-    mc:Ignorable="d" d:DesignHeight="480" d:DesignWidth="728"
-    shell:SystemTray.IsVisible="True">
+    SupportedOrientations="PortraitOrLandscape"  Orientation="Portrait"
+    mc:Ignorable="d" d:DesignHeight="800" d:DesignWidth="480"
+    shell:SystemTray.IsVisible="False">
 
     <!--LayoutRoot 是包含所有页面内容的根网格-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
@@ -29,8 +29,8 @@
 
         <!--ContentPanel - 在此处放置其他内容-->
         
-            <Image  HorizontalAlignment="Left" Margin="12,6,0,0" Name="imageBox" Stretch="Uniform" VerticalAlignment="Top" Source="/LivePPT-Demo;component/Images/Penguins.jpg" />            
-        
+            <Image Margin="12,6,0,0" Name="imageBox" Stretch="Uniform" VerticalAlignment="Center" HorizontalAlignment="Center" Source="/LivePPT-Demo;component/Images/Penguins.jpg"/>
+        <Button Content="Button" Height="72" HorizontalAlignment="Left" Margin="156,647,0,0" Name="button1" VerticalAlignment="Top" Width="160" Click="button1_Click"   />
     </Grid>
  
     <!--演示 ApplicationBar 用法的示例代码-->
@@ -47,7 +47,7 @@
 
 
     <!--旋转门动画-->
-   
+   <!--
     <toolkit:TransitionService.NavigationInTransition>
         <toolkit:NavigationInTransition>
             <toolkit:NavigationInTransition.Backward>
@@ -67,21 +67,31 @@
                 <toolkit:TurnstileTransition Mode="ForwardOut"/>
             </toolkit:NavigationOutTransition.Forward>
         </toolkit:NavigationOutTransition>
-    </toolkit:TransitionService.NavigationOutTransition>
+    </toolkit:TransitionService.NavigationOutTransition>-->
 
     <!--垂直旋转动画-->
-    <!--
+    
     <toolkit:TransitionService.NavigationInTransition>
         <toolkit:NavigationInTransition>
             <toolkit:NavigationInTransition.Backward>
-                <toolkit:RotateTransition />
+                <toolkit:SlideTransition />
             </toolkit:NavigationInTransition.Backward>
             <toolkit:NavigationInTransition.Forward>
-                <toolkit:RotateTransition />
+                <toolkit:SlideTransition />
             </toolkit:NavigationInTransition.Forward>
         </toolkit:NavigationInTransition>
     </toolkit:TransitionService.NavigationInTransition>
     <toolkit:TransitionService.NavigationOutTransition>
+        <toolkit:NavigationOutTransition>
+            <toolkit:NavigationOutTransition.Backward>
+                <toolkit:TurnstileTransition Mode="BackwardOut"/>
+            </toolkit:NavigationOutTransition.Backward>
+            <toolkit:NavigationOutTransition.Forward>
+                <toolkit:TurnstileTransition Mode="ForwardOut"/>
+            </toolkit:NavigationOutTransition.Forward>
+        </toolkit:NavigationOutTransition>
+    </toolkit:TransitionService.NavigationOutTransition>
+    <!--<toolkit:TransitionService.NavigationOutTransition>
         <toolkit:NavigationOutTransition>
             <toolkit:NavigationOutTransition.Backward>
                 <toolkit:RotateTransition />
